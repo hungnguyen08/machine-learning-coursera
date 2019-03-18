@@ -22,6 +22,24 @@ idx = zeros(size(X,1), 1);
 %
 
 
+%for i =1:size(X,1)
+%	for j =1:K
+%	temp(j) = X(i,:) - centroids(j,:)
+%	end
+%	min
+%	
+%end
+distance_matrix = zeros(size(X,1),K);  %[300x3]matrix
+%size(distance_matrix)
+for i= 1:K
+	%centroids(i,:)
+	temp = bsxfun(@minus, X, centroids(i,:)); %[300x2]matrix
+	%size(temp)
+	distance_matrix(:,i) = sum(temp.^2,2);
+end
+
+[value, idx] = min(distance_matrix,[], 2);
+
 
 
 
